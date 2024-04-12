@@ -54,4 +54,6 @@ dependencies {
     implementation("com.squareup.okhttp3:okhttp:4.9.3")
     implementation("commons-codec:commons-codec:1.16.1")
     implementation("dev.langchain4j:langchain4j-open-ai:0.29.1")
+    implementation("dev.langchain4j:langchain4j-hugging-face:0.29.1")
+    implementation("com.squareup.picasso:picasso:2.71828")
 }

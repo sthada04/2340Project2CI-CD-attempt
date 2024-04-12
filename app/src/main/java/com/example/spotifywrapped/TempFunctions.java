@@ -46,16 +46,6 @@ public class TempFunctions {
 
     }
 
-    public String llmCall(String[] userTopSongs) {
-        String response = "Generating...";
-        //OpenAiChatModel model = OpenAiChatModel.withApiKey(apiKey); --> works for OpenAI
 
-        //FIXME: Hugging face models not working
-        //ChatLanguageModel model2 = HuggingFaceChatModel.withAccessToken("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");
-        //hugging face key: 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
-
-
-        return response;
-    }
 
 }

@@ -1,5 +1,6 @@
 package com.example.spotifywrapped.ui.wrappedfragments;
 
+import android.os.AsyncTask;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,17 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.spotifywrapped.R;
+import com.example.spotifywrapped.WrappedActivity;
+import com.example.spotifywrapped.WrappedData;
+
+import java.lang.ref.WeakReference;
+
+import dev.langchain4j.model.chat.ChatLanguageModel;
+import dev.langchain4j.model.openai.OpenAiChatModel;
+import dev.langchain4j.model.huggingface.HuggingFaceChatModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -61,6 +71,90 @@ public class WrappedAI extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wrapped_ai, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_wrapped_ai, container, false);
+
+        TextView aiResponse = rootView.findViewById(R.id.AIResponseText);
+
+        // Start AsyncTask to perform network operation
+        new LLMApiTask(aiResponse, WrappedActivity.curData).execute();
+
+        return rootView;
     }
+
+    private static class LLMApiTask extends AsyncTask<Void, Void, String> {
+        private WeakReference<TextView> aiResponseRef;
+        private WrappedData userData;
+
+        LLMApiTask(TextView aiResponse, WrappedData userData) {
+            this.aiResponseRef = new WeakReference<>(aiResponse);
+            this.userData = userData;
+        }
+
+        @Override
+        protected String doInBackground(Void... voids) {
+            String response = "Generating...";
+
+            // Initialize your model
+            ChatLanguageModel model2 = HuggingFaceChatModel.withAccessToken("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");
+
+            // Build prompt string
+            String prompt = "Imagine you’re describing the fashion style of a user. This user's favorite albums are: ";
+            for (String album : userData.getAlbumNames()) {
+                prompt += album + ", ";
+            }
+            prompt += ", and the user's favorite songs are: ";
+            for (String artist : userData.getArtistNames()) {
+                prompt += artist + ", ";
+            }
+            prompt += ". How would this person dress? What colors, fabrics, and accessories would they choose? Write a detailed description of their outfit, capturing their unique personality and the emotions evoked by their favorite music.";
+
+            // Generate response asynchronously
+            response = model2.generate(prompt);
+
+            return response;
+        }
+
+        @Override
+        protected void onPostExecute(String response) {
+            TextView aiResponse = aiResponseRef.get();
+            if (aiResponse != null) {
+                aiResponse.setText(response);
+            }
+        }
+    }
+
+
+    public String llmCall(WrappedData userData) {
+        String response = "Generating...";
+        //OpenAiChatModel model = OpenAiChatModel.withApiKey(apiKey); --> works for OpenAI
+
+        //NOTE: If you want to use a different type of model, you need to add the dependency in build.gradle.kts
+        ChatLanguageModel model2 = HuggingFaceChatModel.withAccessToken("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");
+        //hugging face key: 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
+        //gemini key: AIzaSyBKW-wrvMw7LmQUqWLxKa04w_5fVyQbhoY
+
+
+
+
+        String prompt = "Imagine you’re describing the fashion style of a user. This user's favorite albums are: ";
+
+        for (String album : userData.getAlbumNames()) {
+            prompt += album + ", ";
+        }
+
+        prompt += ", and the user's favorite songs are: ";
+
+        for (String artist : userData.getArtistNames()) {
+            prompt += artist + ", ";
+        }
+
+        prompt += ". How would this person dress? What colors, fabrics, and accessories would they choose? Write a detailed description of their outfit, capturing their unique personality and the emotions evoked by their favorite music.";
+
+
+        response = model2.generate(prompt);
+
+
+        return response;
+    }
+
 }

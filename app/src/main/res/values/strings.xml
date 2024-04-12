@@ -13,4 +13,10 @@
     <string name="friends_tab_requests">Requests</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="my_profile">My Profile</string>
+    <string name="friends_list">Friends List</string>
+    <string name="delete_account">Delete Account</string>
+    <string name="friends">Friends</string>
+    <string name="back">Back</string>
+    <string name="update_account_details">Update Account Details</string>
 </resources>

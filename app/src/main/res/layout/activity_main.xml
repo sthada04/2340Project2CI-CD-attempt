@@ -11,14 +11,6 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/code_btn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="8dp"
-            android:layout_marginTop="20dp"
-            android:text="@string/link_spotify" />
-
         <TextView
             android:id="@+id/response_text_view"
             android:layout_width="match_parent"
@@ -31,7 +23,7 @@
             android:layout_height="wrap_content">
 
             <Button
-                android:id="@+id/profile_btn"
+                android:id="@+id/spotify_btn"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
@@ -48,14 +40,37 @@
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
             android:layout_marginTop="20dp"
-            android:text="Friends List" />
+            android:text="@string/friends_list" />
 
         <Button
-            android:id="@+id/logout_btn"
+            android:id="@+id/profile_btn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="8dp"
-            android:text="@string/logout" />
+            android:layout_marginTop="20dp"
+            android:text="@string/my_profile"/>
+
+        <Button
+            android:id="@+id/wrapped_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginTop="20dp"
+            android:text="View Your Wrapped!" />
+
+        <Button
+            android:id="@+id/wrapped_ai"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_marginTop="20dp"
+            android:text="Wrapped AI" />
+
+        <FrameLayout
+            android:id="@+id/fragment_container"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

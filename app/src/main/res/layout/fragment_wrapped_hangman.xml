@@ -30,7 +30,10 @@
                 android:id="@+id/chip"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                app:checkedIconVisible="false"
+                app:chipIconVisible="false"
+                app:closeIconVisible="false" />
 
             <com.google.android.material.chip.Chip
                 android:id="@+id/chip2"
@@ -67,10 +70,28 @@
             android:textAlignment="center"
             android:textAppearance="@style/TextAppearance.AppCompat.Display1" />
 
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_guess"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="hint" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <Button
+            android:id="@+id/guessButton"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Guess!" />
+
         <ImageView
             android:id="@+id/gameResultsIcon"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:visibility="invisible"
             tools:srcCompat="@android:drawable/ic_delete" />
 
         <TextView
@@ -78,7 +99,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sorry, you failed :("
-            android:textAlignment="center" />
+            android:textAlignment="center"
+            android:visibility="invisible" />
     </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

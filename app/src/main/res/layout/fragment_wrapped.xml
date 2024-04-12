@@ -30,14 +30,29 @@
         app:layout_constraintTop_toBottomOf="@+id/wrappedWelcomeText"
         app:srcCompat="@drawable/jlo_dummy_icon" />
 
-    <Button
-        android:id="@+id/exitWelcomeViewButton"
-        android:layout_width="wrap_content"
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        android:text="Continue"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/profilePictureWelcome" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/profilePictureWelcome"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center"
+        android:id = "@+id/buttonHolder"
+        android:paddingBottom="50dp">
+
+        <Button
+            android:id="@+id/continue_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Continue"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginEnd="50dp"
+            android:layout_marginStart="50dp"/>
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
