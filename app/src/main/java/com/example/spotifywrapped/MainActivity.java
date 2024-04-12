@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
                         getToken();
                     }
                 } else {
-                    Log.d(TAG, "No such document");
+                    Log.d(TAG, "No sucddh document");
                 }
             } else {
                 Log.d(TAG, "get failed with ", task.getException());
