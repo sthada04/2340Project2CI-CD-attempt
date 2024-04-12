@@ -43,7 +43,7 @@ public class Friends extends AppCompatActivity {
 
 
                 android.app.AlertDialog.Builder builder = new AlertDialog.Builder(Friends.this);
-                builder.setTitle("Add Friend");
+                builder.setTitle("Add Many Friend");
 
                 View popView = getLayoutInflater().inflate(R.layout.add_friend_popup, null);
                 EditText friendID = popView.findViewById(R.id.friendNameBox);
