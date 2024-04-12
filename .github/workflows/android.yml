@@ -17,10 +17,13 @@ jobs:
         distribution: 'adopt'
         java-version: '11'
 
+    - name: Ensure executable permissions for gradlew
+      run: chmod +x ./gradlew
+
     - name: Build with Gradle
       run: ./gradlew build
+      
   formatting:
-  
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4 # v2 minimum required
